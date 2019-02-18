@@ -1,0 +1,13 @@
+/*modify colors*/
+$colors: (
+  main: #fff,
+  primary: #040307,
+  accent: #eeeeee,
+  blue: #244ad0,
+  acqua: #18FFFF,
+  maroon: #B53599,
+  gray:#666666
+);
+@function color($color-name){
+  @return map-get($colors, $color-name)
+}

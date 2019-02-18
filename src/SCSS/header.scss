@@ -1,0 +1,35 @@
+.header{
+    background-color: color(primary);
+    width: 100%;
+    height: 60px;
+    padding: 0 4px*8;
+    position: relative;
+    .logo {
+      width: 40px;
+      height: auto;
+      float: left;
+      margin-top: $marginTop;
+      margin-right: 4px*8;
+    }
+    .links{
+      display: block;
+      padding-top: 4px*6;
+  
+      li {
+        float: left;
+        padding-right: 4px*6;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+          color:color(main);
+          transition: 0.3s ease-in;
+  
+          &:hover{
+            color: color(acqua);
+            text-shadow: 2px 2px 2px rgba(24, 255, 255, 0.7);
+            
+          }
+        }
+      }
+    }
+  }
