@@ -1,41 +1,19 @@
 import React from 'react';
 import {Scrollbars} from 'react-custom-scrollbars';
-import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
+import * as latestMoviesSelectors from "../store/latest_movies/selectors";
+import * as latestMoviesActions from "../store/latest_movies/actions";
+import {connect} from "react-redux";
 
-library.add(faStar)
-
-class LatestMovie extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            latestMovies: []
-        }
-    }
+class LatestMovies extends React.Component {
 
     componentDidMount() {
-
-
-        let BaseMovieUrl = 'https://api.themoviedb.org/3/movie/latest?api_key=1d1620c73f08ab33b4763a7a15fcda29&language=en-US';
-        fetch(BaseMovieUrl).then(response => {
-            if (!response.ok) {
-                throw Error("Failed connection to the API")
-            }
-            return response
-        })
-            .then((response) => response.json())
-            .then((responseJSON) => {
-                this.setState({latestMovies: [responseJSON]});
-            })
-            .catch((error) => {
-                alert('error');
-            });
+        this.props.getLatestMovie();
     }
 
     render() {
+        let latestMovies = this.props.latestMovies;
 
-        let {latestMovies} = this.state;
         return (
             <div className="container">
                 <div className="wrapper">
@@ -62,4 +40,20 @@ class LatestMovie extends React.Component {
     }
 }
 
-export default LatestMovie;
+
+
+const mapStateToProps = (state) => {
+    return {
+        error: latestMoviesSelectors.getError(state),
+        loading: latestMoviesSelectors.getLoading(state),
+        latestMovies: latestMoviesSelectors.getLatestMovies(state),
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getLatestMovie: () => dispatch(latestMoviesActions.getLatestMovies()),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LatestMovies);

@@ -3,33 +3,33 @@ import {types} from './actions'
 const initialState = {
     error: false,
     loading: false,
-    topRatedMovies: []
+    upcomingMovies: []
 };
 
 const transfersSearchByReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_TOP_RATED_MOVIES_START:
+        case types.GET_UPCOMING_MOVIES_START:
             return {
                 ...state,
                 error: false,
                 loading: true,
-                topRatedMovies: []
+               upcomingMovies: []
             };
 
-        case types.GET_TOP_RATED_MOVIES_SUCCESS:
+        case types.GET_UPCOMING_MOVIES_SUCCESS:
             return {
                 ...state,
                 error: false,
                 loading: false,
-                topRatedMovies: action.responseData.results
+                upcomingMovies: action.responseData.results
             };
 
-        case types.GET_TOP_RATED_MOVIES_FAILED:
+        case types.GET_UPCOMING_MOVIES_FAILED:
             return {
                 ...state,
                 error: true,
                 loading: false,
-                topRatedMovies: []
+                upcomingMovies: []
             };
         default: {
             return state;

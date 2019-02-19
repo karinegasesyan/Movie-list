@@ -3,9 +3,13 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
 import top_rated_movies from './store/top_rated_movies/reducer';
+import latest_movies from './store/latest_movies/reducer';
+import upcoming_movies from './store/upcoming/reducer';
 
 const rootReducer = combineReducers({
     top_rated_movies: top_rated_movies,
+    latest_movies: latest_movies,
+    upcoming_movies: upcoming_movies,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

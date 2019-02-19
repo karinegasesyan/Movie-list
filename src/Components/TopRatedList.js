@@ -1,14 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Scrollbars} from 'react-custom-scrollbars';
-import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
-import axios from '../movies_axios';
 import * as topRatedMoviesSelectors from '../store/top_rated_movies/selectors';
 import * as topRatedMoviesActions from '../store/top_rated_movies/actions';
 
-library.add(faStar)
 
 
 class TopRatedList extends React.Component {
@@ -41,13 +37,6 @@ class TopRatedList extends React.Component {
             </div>
 
         )
-    }
-
-    getTopRatedMovies = async () => {
-        let topRatedMoviesResponse = await axios.get('/movie/popular?api_key=1d1620c73f08ab33b4763a7a15fcda29&language=en-US&page=1'),
-            moviesData = JSON.parse(topRatedMoviesResponse.request.response);
-
-        return moviesData.results
     }
 }
 

@@ -7,5 +7,5 @@ export const getLoading = (state) => {
 };
 
 export const getTopRatedMovies = (state) => {
-    return state.top_rated_movies.movies
+    return state.top_rated_movies.topRatedMovies
 };
