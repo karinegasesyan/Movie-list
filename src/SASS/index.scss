@@ -6,6 +6,16 @@
 @import './font-weight_size.scss';
 @import './header.scss';
 @import './button.scss';
+@import 'flex_box.scss';
+@import 'movie-list.scss';
+
+.main-bg{
+  position: fixed;
+  width: 100%;
+  background-position: center center;
+  background-size: contain;
+  top: 0;
+}
 .overlay {
   -webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 51% 100%);
   clip-path: polygon(100% 0, 100% 0, 100% 100%, 51% 100%);
@@ -17,23 +27,15 @@
 }
 .wrap-body{
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color:color(primary);
+  font-size: size(font-size-regular);
+  color: color(primary);
   height: 100%;
   width: 100%;
 }
-.App,
 .container{
-  max-width: 1280px;
+  max-width: 1300px;
   margin: $marginAuto;
-}
-.flexBox {
-  display: flex;
-}
-.flexItem {
-  flex: 1;
-  flex-grow: 0;
-  flex-shrink: 0;
+  position: relative;
 }
 /*login form*/
 .outer-wrapper{
@@ -54,7 +56,7 @@
 
       p{
         font-size: 16px;
-        color: color(acqua);
+        color: color(tectra);
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         font-weight: bold;
         margin-bottom: 16px;
@@ -81,53 +83,6 @@
     border:1px solid #ccc;
     cursor: pointer;
   }
-} 
-
-/*Home*/
-.wrapper{
-  width: 100%;
-  display: inline-block;
-  margin: 8px auto;
-  min-height: 100vh;
-  .movie-list{
-    width: 176px;
-    height: 240px;
-    margin-right: $marginRight;
-    margin-bottom:4px*2;
-    position: relative;
-    float: left;
-    background: no-repeat;
-    background-size: cover;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1); 
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1); 
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1);
-    transition: all 200ms ease-in;
-    transform: scale(1);  
-    &:hover{
-      box-shadow: 0px 0px 150px #000000;
-      z-index: 2;
-      -webkit-transition: all 200ms ease-in;
-      -webkit-transform: scale(1.5);
-      -ms-transition: all 200ms ease-in;
-      -ms-transform: scale(1.5);   
-      -moz-transition: all 200ms ease-in;
-      -moz-transform: scale(1.5);
-      transition: all 200ms ease-in;
-      transform: scale(1.5);
-    }
-  }
-  .movie__list--info{
-    position: absolute;
-    color: #fff;
-    font-size: 12px;
-    background: rgba(0, 0, 0, 0.5);
-    bottom: 0;
-    width: 100%;
-    padding: 4px 8px;
-  }
 }
 
 /*footer*/
@@ -139,4 +94,5 @@ footer{
   font-size: 12px;
   padding: 0 4*4px;
   line-height: 40px;
+  position: relative;
 }

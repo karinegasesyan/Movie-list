@@ -1,0 +1,38 @@
+/*Movie list*/
+.wrapper{
+  width: 100%;
+  display: inline-block;
+  margin: 32px auto;
+  height: calc(100vh - 164px);
+  background: rgba(10, 4, 4, 0.5);
+  padding: 4px*4;
+
+  .movie-list{
+    width: 220px;
+    height: 302px;
+    margin: 4px*4;
+    position: relative;
+    float: left;
+    background: no-repeat;
+    background-size: cover;
+    @include transform(scale(1));
+    @include transition(all 200ms ease-in);
+
+    &:hover{
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, .2);
+      z-index: 2;
+      @include transform(scale(1.1));
+      @include transition(all 200ms ease-in);
+    }
+  }
+  .movie__list--info{
+    position: absolute;
+    color: #fff;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    width: 100%;
+    padding:8px;
+    line-height: 1.4;
+  }
+}

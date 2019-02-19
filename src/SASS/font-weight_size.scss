@@ -12,12 +12,18 @@ $modifyFontWeight: (
     black-weight:900
 );
 
-/*font-size*/ 
-
+/*font-size*/
+$modifyFontSize: (
+   font-size-small: 12px,
+   font-size-regular: 14px,
+   font-size-large: 16px
+);
 @function weight($font-weight){
     @return map-get( $modifyFontWeight, $font-weight)
 }
-
+@function size($font-size){
+    @return map-get( $modifyFontSize, $font-size)
+}
 
 
 
