@@ -5,7 +5,6 @@ $colors: (
   accent: #d40606,
   tectra: #a11a1c,
   maroon: #53181c,
-  gray:#5a5a5c
 );
 @function color($color-name){
   @return map-get($colors, $color-name)

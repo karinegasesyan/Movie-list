@@ -6,7 +6,9 @@ class Login extends React.Component{
         return(
            <div className="outer-wrapper">
                 <div className="login-wrapper">
-                    <p>Login page</p>
+                    <div className="flex justify-center align-center">
+                        <img className="logo flex justify-center align-center" src="film-icon.png" />
+                    </div>
                     <LoginForm/>
                 </div>
            </div>

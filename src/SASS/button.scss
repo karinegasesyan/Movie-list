@@ -25,14 +25,14 @@
   }
 
 .onSubmit{
-    a {
-        color: color(main);
-        font-size: 16px;
-        text-decoration: none;
-      }
-      &:hover{
-        background:color(maroon);
-      }
+  a {
+      color: color(main);
+      font-size: 16px;
+      text-decoration: none;
+  }
+  &:hover{
+      background:color(accent);
+  }
 }
 .fav-icon{
   position: absolute;
