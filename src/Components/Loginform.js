@@ -14,7 +14,6 @@ class LoginForm extends React.Component{
         //PostData('login', this.state).then((result)=>{
          //let responseJSON = result;
         //});
-        console.log('you are welcome');
     }
 
     onChange(e){
