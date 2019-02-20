@@ -1,41 +1,25 @@
 import React from 'react';
+import {connect} from "react-redux";
 import {Scrollbars} from 'react-custom-scrollbars';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import * as nowPlayingMoviesSelectors from "../store/now_playing_movies/selectors";
+import * as nowPlayingMoviesActions from "../store/now_playing_movies/actions";
+
 
 
 class NowPlaying extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            nowPlayingMovies: []
-        }
-    }
-
     componentDidMount() {
-        let BaseMovieUrl = 'https://api.themoviedb.org/3/movie/now_playing?api_key=1d1620c73f08ab33b4763a7a15fcda29&language=en-US&page=1';
-        fetch(BaseMovieUrl).then(response => {
-            if (!response.ok) {
-                throw Error("Failed connection to the API")
-            }
-            return response
-        })
-            .then((response) => response.json())
-            .then((responseJSON) => {
-                this.setState({  nowPlayingMovies: (responseJSON.results) });
-            })
-            .catch((error) => {
-                alert('error');
-            });
+        this.props.getNowPlayingMovies();
     }
 
     render() {
+        let nowPlayingMovies = this.props.nowPlayingMovies;
 
-        let {  nowPlayingMovies } = this.state;
         return(
             <div className="container">
                 <div  className="wrapper">
                     <Scrollbars>
-                        {  nowPlayingMovies.map(function( movie, index ){
+                        {nowPlayingMovies.map(function( movie, index ){
                             return  <div key={ movie.id } className="movie-list" style={{backgroundImage: "url(http://image.tmdb.org/t/p/w780/" + movie.poster_path + ")"}}>
                                 <div className="movie__list--info">
                                     <p>{ movie.title }</p>
@@ -54,4 +38,18 @@ class NowPlaying extends React.Component {
         )
     }
 }
-export default NowPlaying;
+const mapStateToProps = (state) => {
+    return {
+        error: nowPlayingMoviesSelectors.getError(state),
+        loading: nowPlayingMoviesSelectors.getLoading(state),
+        nowPlayingMovies: nowPlayingMoviesSelectors.getNowPlayingMovies(state),
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getNowPlayingMovies: () => dispatch(nowPlayingMoviesActions.getNowPlayingMovies()),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NowPlaying);

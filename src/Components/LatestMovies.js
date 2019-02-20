@@ -1,9 +1,11 @@
 import React from 'react';
+import {connect} from "react-redux";
 import {Scrollbars} from 'react-custom-scrollbars';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import * as latestMoviesSelectors from "../store/latest_movies/selectors";
 import * as latestMoviesActions from "../store/latest_movies/actions";
-import {connect} from "react-redux";
+
+
 
 class LatestMovies extends React.Component {
 
@@ -18,8 +20,7 @@ class LatestMovies extends React.Component {
             <div className="container">
                 <div className="wrapper">
                     <Scrollbars>
-                        {
-                            latestMovies.map(function (movie, index) {
+                        {latestMovies.map(function (movie, index) {
                                 return <div key={movie.id} className="movie-list"
                                             style={{backgroundImage: "url(http://image.tmdb.org/t/p/w780/" + movie.poster_path + ")"}}>
                                     <div className="movie__list--info">
