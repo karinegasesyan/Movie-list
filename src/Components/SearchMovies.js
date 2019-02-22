@@ -61,7 +61,7 @@ class SearchMovies extends React.Component {
                 this.setState({searchMovies: (responseJSON.results)});
             })
             .catch((error) => {
-                alert('error');
+                console.log('error');
             });
     }
 }
