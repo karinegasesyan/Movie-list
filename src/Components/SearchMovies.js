@@ -1,7 +1,6 @@
 import React from 'react';
 import {Scrollbars} from "react-custom-scrollbars";
 import SearchInput from './SearchInput';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 class SearchMovies extends React.Component {
