@@ -14,8 +14,8 @@ class LoginForm extends React.Component{
         let url = 'https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=1d1620c73f08ab33b4763a7a15fcda29';
         let data = {username: ''};
         fetch(url, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
+            method: 'POST',
+            body: JSON.stringify(data),
             headers:{
                 'Content-Type': 'application/json'
             }
