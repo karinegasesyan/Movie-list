@@ -3,7 +3,7 @@ import React from 'react';
 class LoginForm extends React.Component{
     constructor(props){
         super(props);
-        this.state={
+        this.state= {
             username:'',
             password:''
         }
@@ -11,9 +11,17 @@ class LoginForm extends React.Component{
         this.onChange = this.onChange.bind(this);
     }
     login(){
-        //PostData('login', this.state).then((result)=>{
-         //let responseJSON = result;
-        //});
+        let url = 'https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=1d1620c73f08ab33b4763a7a15fcda29';
+        let data = {username: ''};
+        fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
     }
 
     onChange(e){
@@ -26,7 +34,7 @@ class LoginForm extends React.Component{
                 <input className="user-input" type="text" name="username" placeholder="username" onChange={this.onChange}/>
                 <label>Password</label>
                 <input className="user-input" type="password" name="password" placeholder="password" onChange={this.onChange}/>
-                <button className="onSubmit btn" type="submit" onClick={this.login}> <a href="#">Sign In</a></button>
+                <button className="onSubmit btn" type="submit" onClick={this.login}> <a href="">Sign In</a></button>
             </form>
         )
     }
